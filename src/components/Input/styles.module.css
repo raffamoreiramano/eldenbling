@@ -1,0 +1,116 @@
+.form_control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .5rem;
+  max-width: 40rem;
+  width: stretch;
+
+  margin-top: 1rem;
+
+  font-size: 1.25rem;
+}
+
+.form_control > label {
+  cursor: text;
+}
+
+.form_control > input {
+  font-size: 1.25rem;
+  font-family: 'Crimson Text', serif;
+  color: rgb(var(--neutral));
+  background: none;
+  border: none;
+  outline: none;
+  padding: .5rem;
+  max-width: 20rem;
+  width: stretch;
+  text-align: center;
+}
+
+.form_control > input::placeholder {
+  color: rgba(var(--neutral), .75);
+}
+
+.form_control::before {
+  content: '‎';
+  display: inline;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 20rem;
+  width: stretch;
+  margin: 0;
+  z-index: -1;
+  padding-block: .5rem;
+  
+  background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .4);
+
+  transition: 200ms ease-in-out;
+  pointer-events: none;
+  user-select: none;
+}
+
+.form_control::after {
+  content: '‎';
+  display: inline;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 20rem;
+  width: stretch;
+  margin: 0;
+  z-index: -1;
+  padding-block: .5rem;
+
+  outline: solid .1rem rgb(var(--neutral));
+  filter: drop-shadow(0 0 .1rem rgb(var(--neutral)));
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.form_control:has(input:hover)::before {
+  background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .6);
+}
+
+.form_control:has(input:focus-visible)::before {
+  background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .7);
+}
+
+@media screen and (min-width: 1366px) {
+  .form_control {
+    flex-direction: row;
+    align-items: center;
+
+    min-width: 40rem;
+    max-width: 60rem;
+    width: max-content;
+    padding-inline: 2rem;
+    margin-inline: .5rem;
+    margin-top: 1.5rem;
+
+    background: rgba(120, 118, 100, .15) 10% 90%;
+
+    box-shadow: 0 0 .5rem .5rem rgba(120, 118, 100, .15);
+  }
+
+  .form_control > input {
+    min-width: 20rem;
+  }
+
+  .form_control::before, .form_control::after {
+    top: 0;
+    left: auto;
+    right: 2rem;
+  }
+  
+  .form_control::before {
+    background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .75);
+  }
+  
+  .form_control:has(input:hover)::before, .form_control:has(input:focus-visible)::before {
+    background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), 1);
+  }
+}
