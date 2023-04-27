@@ -58,6 +58,7 @@ body {
     rgb(65, 65, 50)
   ) rgba(15, 20, 15, 25%);
   background-blend-mode: soft-light;
+  background-attachment: fixed;
 
   display: flex;
   flex-direction: column;
@@ -96,6 +97,12 @@ main::before {
 
   background: rgba(var(--dark), .25);
   filter: blur(.5rem);
+}
+
+@media screen and (max-width: 480px)  {
+  .container, footer {
+    padding-inline: 2rem;
+  }
 }
 
 @media screen and (max-width: 767px)  {

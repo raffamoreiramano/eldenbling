@@ -1,8 +1,11 @@
 .table {
   position: relative;
-  margin: 1rem 0;
+  margin: 2rem 0;
   max-width: 20rem;
   width: stretch;
+  border-spacing: 0;
+
+  transition: 250ms 250ms ease-in-out;
 }
 
 .table::before {
@@ -50,29 +53,126 @@
 
 .table tr {
   font-size: 1.25rem;
+  transition: 200ms ease-in-out, opacity 250ms 500ms ease-in-out;
 }
 
 .table th,
 .table td {
   padding-bottom: .25rem;
+  padding-left: .75rem;
   text-align: start;
   font-weight: normal;
+  transition: 250ms 250ms ease-in-out;
 }
 
 .table th {
   color: rgb(var(--secondary));
 }
 
-.table td {
-  padding-left: .75rem;
+.table thead th {
+  padding-left: 0;
 }
 
-.table tr :last-child {
+.table tr > :last-child {
   text-align: end;
 }
 
-.table tr :only-child {
+.table tr > :only-child {
   text-align: start;
+}
+
+.table td:empty {
+  padding-block: .25rem;
+}
+
+.table tbody th {
+  padding-top: .5rem;
+}
+
+.table .collapse_button {
+  display: inline-flex;
+  gap: .5rem;
+  cursor: pointer;
+  text-align: inherit;
+  align-items: center;
+  width: stretch;
+  justify-content: flex-end;
+}
+
+.table thead th:first-child .collapse_button {
+  justify-content: flex-start;
+}
+
+.table thead th:only-child .collapse_button {
+  justify-content: space-between;
+}
+
+.table .collapse_icon {
+  font-style: normal;
+  display: block;
+  position: relative;
+  width: .75rem;
+  height: .75rem;
+  filter: drop-shadow(0 .2rem .2rem rgb(var(--dark)));
+  scale: .75;
+  transition: 125ms ease-in-out;
+}
+
+.table .collapse_icon::before,
+.table .collapse_icon::after {
+  content: '';
+  position: absolute;
+  border: solid rgb(var(--secondary));
+  border-width: 0 .25rem .25rem 0;
+  rotate: 45deg;
+}
+
+.table .collapse_icon::before {
+  left: 0;
+  top: 0;
+  translate: 100% 0;
+}
+
+.table .collapse_icon::after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.table .collapse_button:has( + .collapse_input:checked) .collapse_icon {
+  rotate: 180deg;
+  filter: drop-shadow(0 -.2rem .2rem rgb(var(--dark)));
+}
+
+.table .collapse_input {
+  display: none;
+}
+
+.table:has( .collapse_input:checked) {
+  border-spacing: 0;
+  margin-top: 1.5rem;
+}
+
+.table thead:has( .collapse_input:checked) + tbody tr {
+  box-shadow: none;
+  opacity: 0;
+  visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+
+.table thead:has( .collapse_input:checked) + tbody tr > * {
+  font-size: 0;
+  padding: 0;
+}
+
+
+@media screen and (max-width: 480px) {
+  .table {
+    max-width: 100%;
+  }
 }
 
 @media screen and (min-width: 1366px) {
@@ -83,6 +183,10 @@
     width: unset;
     border-spacing: 0 1.5rem;
   }
+
+  .table:has(+ .table) {
+    margin-bottom: 0;
+  }  
 
   .table tbody {
     position: initial;
@@ -98,9 +202,27 @@
     box-shadow: 0 0 .5rem .5rem rgba(120, 118, 100, .15);
   }
 
+  .table tbody tr:has(th) {
+    background: none;
+    box-shadow: none;
+  }
+
+  .table tr:has(td:empty) {
+    background: none;
+    box-shadow: none;
+  }
+
   .table th {
     font-weight: normal;
     padding: .5rem 1rem 0 1rem;
+  }
+
+  .table thead th:has( .collapse_button) {
+    padding: 0;
+  }
+
+  .table thead th:has( .collapse_button) .collapse_button {
+    padding: .5rem 2rem 0 2rem;
   }
 
   .table td {
@@ -108,118 +230,15 @@
     text-align: start;
   }
   
-  .table tr :first-child {
+  .table tr > :first-child {
     padding-left: 2rem;
   }
   
-  .table tr :last-child {
+  .table tr > :last-child {
     padding-right: 2rem;
   }
-}
 
-/* 
-.form_control {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: .5rem;
-  width: fit-content;
-
-  margin-block: 1rem;
-
-  font-size: 1.25rem;
-}
-
-.form_control > label {
-  cursor: text;
-}
-
-.form_control > input {
-  font-size: 1.25rem;
-  font-family: 'Crimson Text', serif;
-  color: rgb(var(--neutral));
-  background: none;
-  border: none;
-  outline: none;
-  padding: .5rem;
-  width: 20rem;
-  text-align: center;
-}
-
-.form_control > input::placeholder {
-  color: rgba(var(--neutral), .75);
-}
-
-.form_control::before {
-  content: '‎';
-  display: inline;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 20rem;
-  margin: 0;
-  z-index: -1;
-  padding-block: .5rem;
-  
-  background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .4);
-
-  transition: 200ms ease-in-out;
-  pointer-events: none;
-  user-select: none;
-}
-
-.form_control::after {
-  content: '‎';
-  display: inline;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 20rem;
-  margin: 0;
-  z-index: -1;
-  padding-block: .5rem;
-
-  outline: solid .1rem rgb(var(--neutral));
-  filter: drop-shadow(0 0 .1rem rgb(var(--neutral)));
-
-  pointer-events: none;
-  user-select: none;
-}
-
-.form_control:has(input:hover)::before {
-  background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .6);
-}
-
-.form_control:has(input:focus-visible)::before {
-  background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .7);
-}
-
-@media screen and (min-width: 1366px) {
-  .form_control {
-    flex-direction: row;
-    align-items: center;
-
-    min-width: 40rem;
-    padding-inline: 2rem;
-    margin: 1.5rem .5rem;
-
-    background: rgba(120, 118, 100, .15) 10% 90%;
-
-    box-shadow: 0 0 .5rem .5rem rgba(120, 118, 100, .15);
-  }
-
-  .form_control::before, .form_control::after {
-    top: 0;
-    right: 2rem;
-  }
-  
-  .form_control::before {
-    background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), .75);
-  }
-  
-  .form_control:has(input:hover)::before, .form_control:has(input:focus-visible)::before {
-    background: radial-gradient(rgba(var(--neutral), .05), transparent) rgba(var(--dark), 1);
+  .table td:empty {
+    padding-block: 0;
   }
 }
-*/
