@@ -1,12 +1,12 @@
 import styles from './styles.module.css'
 
 interface props {
-  id: string;
-  name: string;
-  label: string;
-  title?: string | null;
-  placeholder?: string | null;
-  autoComplete?: string | null;
+  id: string
+  name: string
+  label: string
+  title?: string | null
+  placeholder?: string | null
+  autoComplete?: string | null
 }
 
 export default function Input({

@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from './styles.module.css';
-import { Children, ReactElement } from 'react';
-import { randomUUID } from 'crypto';
+import { randomUUID } from 'crypto'
+import React, { Children, ReactElement } from 'react'
+import styles from './styles.module.css'
+
 interface props {
-  id?: string;
-  collapsable?: boolean | string;
+  id?: string
+  collapsable?: boolean | string
   className?: string,
   children: React.ReactElement[]
 }
@@ -16,19 +16,19 @@ export default function Table(props:  props) {
 
   const [thead] = Children.map(props.children, (child: ReactElement) => {
     if (child.type === 'thead') {
-      return child;
+      return child
     }
-  });
+  })
 
   const [tbody] = Children.map(props.children, (child: ReactElement) => {
     if (child.type === 'tbody') {
-      return child;
+      return child
     }
-  });
+  })
 
-  const collapse_id = props.id ? `collapse-${props.id}` : `collapse-${randomUUID()}` ;
+  const collapse_id = props.id ? `collapse-${props.id}` : `collapse-${randomUUID()}`
 
-  const ths = Children.map(thead.props.children.props.children, (child: ReactElement) => child);
+  const ths = Children.map(thead.props.children.props.children, (child: ReactElement) => child)
 
   const thead_children = ths.map((child: ReactElement, index) => {
     if (ths.length === 1) {
@@ -57,8 +57,8 @@ export default function Table(props:  props) {
       </th>
     }
 
-    return final;
-  });
+    return final
+  })
 
   return <table id={props.id} className={props.className ? `${props.className} ${styles.table}` : styles.table}>
     <thead {...thead.props}>

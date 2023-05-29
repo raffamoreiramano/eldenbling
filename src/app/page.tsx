@@ -1,8 +1,6 @@
-import { Inter } from 'next/font/google'
+import Color from '@/components/Color'
 import Input from '@/components/Input'
 import Table from '@/components/Table'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return <main>
@@ -39,7 +37,7 @@ export default function Home() {
 
         <tr>
           <td>Skin Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -528,7 +526,7 @@ export default function Home() {
 
         <tr>
           <td>Hair Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -658,7 +656,7 @@ export default function Home() {
 
         <tr>
           <td>Right Iris Color</td>
-          <td>128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -668,12 +666,12 @@ export default function Home() {
 
         <tr>
           <td>R Clouding Color</td>
-          <td>128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
           <td>R Eye White Color</td>
-          <td>128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -738,7 +736,7 @@ export default function Home() {
 
         <tr>
           <td>Dark Circles Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
       </tbody>
     </Table>
@@ -758,7 +756,7 @@ export default function Home() {
 
         <tr>
           <td>Eyeliner Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -768,7 +766,7 @@ export default function Home() {
 
         <tr>
           <td>Eyeshadow Color [↑]</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -778,7 +776,7 @@ export default function Home() {
 
         <tr>
           <td>Eyeshadow Color [↓]</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -788,7 +786,7 @@ export default function Home() {
 
         <tr>
           <td>Cheeks Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -798,7 +796,7 @@ export default function Home() {
 
         <tr>
           <td>Lipstick Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
       </tbody>
     </Table>
@@ -818,7 +816,7 @@ export default function Home() {
 
         <tr>
           <td>Tattoo/Mark Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
 
         <tr>
@@ -861,7 +859,7 @@ export default function Home() {
 
         <tr>
           <td>Eyepatch Color</td>
-          <td>128 128 128</td>
+          <td><Color RGB={[128, 128, 128]} /></td>
         </tr>
       </tbody>
     </Table>
