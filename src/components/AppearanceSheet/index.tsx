@@ -70,12 +70,12 @@ export default function AppearanceSheet({ appearance }: { appearance: Appearance
 
                   if (typeof value === "boolean") {
                     switch (field) {
-                      case "bodyType":
+                      case "Body Type":
                         return <tr>
                           <td>{field}</td>
                           <td>{value ? "Type B" : "Type A"}</td>
                         </tr>
-                      case "musculature":
+                      case "Musculature":
                         return <tr>
                           <td>{field}</td>
                           <td>{value ? "Muscular" : "Standard"}</td>
