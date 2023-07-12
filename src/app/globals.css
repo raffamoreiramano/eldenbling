@@ -41,6 +41,16 @@ a {
   text-decoration: none;
 }
 
+hr {
+  margin-block: 2rem;
+  height: 0.1rem;
+  background: linear-gradient(to right, transparent, rgb(var(--neutral), .75) 25% 75%, transparent);
+  border: none;
+  filter: blur(.05rem);
+  user-select: none;
+  pointer-events: none;
+}
+
 /* COMPONENTS */
 
 html,
