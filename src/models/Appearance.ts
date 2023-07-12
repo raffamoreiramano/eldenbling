@@ -14,7 +14,6 @@ export default class Appearance {
     "Body Hair Color": number | undefined
     "Musculature": boolean
   }
-  
 
   "Adjust Face Template"!: {
     "Bone Structure": number
@@ -23,7 +22,7 @@ export default class Appearance {
     "Facial Aesthetic": number
   }
 
-  "Facial  Balance"!: {
+  "Facial Balance"!: {
     "Nose Size": number
     "Nose Forehead Ratio": number
     "Face Protrusion": number
@@ -41,20 +40,20 @@ export default class Appearance {
     "Nose Bridge Width": number
   }
 
-  "Brow  Ridge"!: {
+  "Brow Ridge"!: {
     "Brow Ridge Height": number
     "Inner Brow Ridge": number
     "Outer Brow Ridge": number
   }
 
-  "Eyes ( Face  Structure)"!: {
+  "Eyes (Face Structure)"!: {
     "Eyes Position": number
     "Eyes Size": number
     "Eyes Slant": number
     "Eyes Spacing": number
   }
 
-  "Nose  Ridge"!: {
+  "Nose Ridge"!: {
     "Nose Ridge Depth": number
     "Nose Ridge Length": number
     "Nose Position": number
@@ -128,7 +127,7 @@ export default class Appearance {
     "White Hairs": number | undefined
   }
 
-  "Facial  Hair"!: {
+  "Facial Hair"!: {
     "Beard": number
     "Beard Color": [number, number, number] | undefined
     "Luster": number | undefined
@@ -157,7 +156,7 @@ export default class Appearance {
     "L Eye Position": number | undefined
   }
 
-  "Skin  Features"!: {
+  "Skin Features"!: {
     "Pores": number
     "Skin Luster": number
     "Dark Circles": number
@@ -180,7 +179,7 @@ export default class Appearance {
   "Tattoo/Mark/Eyepatch"!: {
     "Tattoo Mark": number
     "Tattoo Mark Color": [number, number, number]
-    "Tweak  Tattoo/Mark": {
+    "Tweak Tattoo/Mark": {
       "Position Vert": number
       "Position Horiz": number
       "Angle": number
@@ -189,9 +188,5 @@ export default class Appearance {
     }
     "Eyepatch": number
     "Eyepatch Color": [number, number, number]
-  }
-
-  constructor(init:  Required< Appearance>) {
-    Object.assign(this, init)
   }
 }
